@@ -1,0 +1,17 @@
+/* Tailwind CSS Directives: These three lines are crucial for Tailwind to inject its base, component, and utility styles. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Body Styles */
+/* Importing the 'Inter' font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Setting the primary dark background color for the entire page */
+  background-color: #030712; 
+}
