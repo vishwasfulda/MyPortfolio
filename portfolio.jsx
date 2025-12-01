@@ -17,12 +17,12 @@ import {
   Sparkles
 } from 'lucide-react';
 
-const Portfolio = () => {
+const Portfolio = ({ navigate }) => { // <--- CHANGE 1: Accept the navigate prop
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll effects
+  // Handle scroll effects for navigation highlighting
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -31,6 +31,7 @@ const Portfolio = () => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
+          // Checks if the section is currently near the top of the viewport
           return rect.top >= 0 && rect.top <= 300;
         }
         return false;
@@ -42,14 +43,16 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Smooth scroll function for navigation links
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
+      setIsMenuOpen(false); // Close mobile menu after selection
     }
   };
 
+  // Component for desktop navigation links
   const NavLink = ({ id, children }) => (
     <button
       onClick={() => scrollToSection(id)}
@@ -59,11 +62,13 @@ const Portfolio = () => {
     >
       {children}
       {activeSection === id && (
+        // Active indicator line with gradient animation
         <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-teal-400 to-violet-500 rounded-full animate-fade-in" />
       )}
     </button>
   );
 
+  // Component for mobile navigation links
   const MobileNavLink = ({ id, children }) => (
     <button
       onClick={() => scrollToSection(id)}
@@ -100,10 +105,10 @@ const Portfolio = () => {
       description: "Assisted My universtiy proffesor in developing practical for the university students to understand the basics of Cloud Computing with use of Kubernetes and OpenStack"
     },
     {
-       company: "Stem Academy",
-       role: "Graphic Designer ",
-       period: "Aug 2023 - Sep 2023",
-       description: "Completed a design-focused program covering essential tools and principles of graphic design, including layout, typography, color theory, and the use of industrystandard software for creating visual content."
+      company: "Stem Academy",
+      role: "Graphic Designer ",
+      period: "Aug 2023 - Sep 2023",
+      description: "Completed a design-focused program covering essential tools and principles of graphic design, including layout, typography, color theory, and the use of industrystandard software for creating visual content."
     },
     {
       company: "UptoSkills",
@@ -113,34 +118,43 @@ const Portfolio = () => {
       }
     ];
 
+  // CHANGE 2: Updated projects with simplified descriptions and correct tech stack
   const projects = [
     {
-      title: "AI Traffic Optimizer",
-      description: "Deep learning model to predict and optimize urban traffic flow. Deployed as a scalable REST API handling 1k+ req/s.",
-      tags: ["Python", "PyTorch", "FastAPI", "Docker"],
-      link: "#",
-      featured: true
+      title: "React Calculator App",
+      description: "A simple, functional calculator built using React for state management and basic arithmetic operations, demonstrating core component architecture.",
+      tags: ["React", "TypeScript", "Tailwind CSS"],
+      link: "calculator" // Internal link used by AppRouter
     },
     {
-      title: "Distributed File System",
-      description: "Fault-tolerant distributed file system implementation with custom consistency protocols and automatic replication recovery.",
-      tags: ["Go", "gRPC", "Systems"],
-      link: "#",
-      featured: true
+      title: "Full-Stack Blog API",
+      description: "Implemented a RESTful API using Node.js and Express to manage blog posts and user authentication, using MySQL for persistence.",
+      tags: ["Node.js", "MySQL", "Express", "TypeScript"],
+      link: "https://github.com/vishwas/blog-api" 
     },
     {
-      title: "Smart Campus",
-      description: "Real-time tracking for campus transit. Mobile-first design with 500+ active student users.",
-      tags: ["React Native", "Firebase", "Node"],
-      link: "#",
-      featured: false
+      title: "Kubernetes Deployer",
+      description: "Created a declarative Kubernetes manifest set (YAML) to deploy a multi-container application, demonstrating fundamental orchestration skills.",
+      tags: ["Kubernetes", "Docker", "DevOps"],
+      link: "https://github.com/vishwas/k8s-deployer"
     },
     {
-      title: "Portfolio Gen",
-      description: "High-performance CLI tool generating static sites from JSON configs.",
-      tags: ["Rust", "CLI", "WASM"],
-      link: "#",
-      featured: false
+      title: "Data Processing Script",
+      description: "A Python script that reads, cleans, and analyzes academic datasets, showcasing proficiency in data manipulation and Python libraries.",
+      tags: ["Python"],
+      link: "https://github.com/vishwas/data-processor"
+    },
+    {
+      title: "Simple 3D Viewer",
+      description: "A small web application using Three.js to render and manipulate basic 3D geometry (e.g., cubes, spheres), highlighting frontend graphics ability.",
+      tags: ["React", "Three.js"],
+      link: "https://github.com/vishwas/3d-viewer"
+    },
+    {
+      title: "Java Inventory System",
+      description: "A command-line tool developed in Java that manages a basic inventory database, demonstrating core object-oriented programming (OOP) and SQL connectivity.",
+      tags: ["Java", "SQL"],
+      link: "https://github.com/vishwas/java-inventory"
     }
   ];
 
@@ -259,6 +273,7 @@ const Portfolio = () => {
                 </p>
               </div>
 
+              {/* Education Card */}
               <div className="mt-10 p-6 bg-gradient-to-br from-white/5 to-white/0 border border-white/10 rounded-2xl backdrop-blur-sm">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-teal-500/10 rounded-xl text-teal-400">
@@ -359,8 +374,36 @@ const Portfolio = () => {
                       <Code size={24} />
                     </div>
                     <div className="flex gap-4 text-zinc-500">
-                      <a href={project.link} className="hover:text-teal-400 transition-colors"><Github size={20} /></a>
-                      <a href={project.link} className="hover:text-teal-400 transition-colors"><ExternalLink size={20} /></a>
+                      {/* GitHub Link */}
+                      <a 
+                        href={project.link === 'calculator' ? personalInfo.github : project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:text-teal-400 transition-colors"
+                      >
+                        <Github size={20} />
+                      </a>
+                      
+                      {/* Live Demo Link / Internal Router Link */}
+                      {project.link === 'calculator' ? (
+                        <button 
+                          onClick={() => navigate('calculator')}
+                          className="hover:text-teal-400 transition-colors"
+                          aria-label="View Live App"
+                        >
+                          <ExternalLink size={20} />
+                        </button>
+                      ) : (
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:text-teal-400 transition-colors"
+                          aria-label="View Live Demo"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -426,8 +469,8 @@ const Portfolio = () => {
       {/* Footer */}
       <footer className="py-8 text-center text-zinc-600 text-sm relative z-10">
         <div className="flex justify-center gap-8 mb-6">
-          <a href={personalInfo.github} className="hover:text-teal-400 transition-colors transform hover:-translate-y-1"><Github size={22} /></a>
-          <a href={personalInfo.linkedin} className="hover:text-teal-400 transition-colors transform hover:-translate-y-1"><Linkedin size={22} /></a>
+          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors transform hover:-translate-y-1"><Github size={22} /></a>
+          <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors transform hover:-translate-y-1"><Linkedin size={22} /></a>
         </div>
         <p>Built with React, Tailwind & Caffeine by <span className="text-teal-500/80">{personalInfo.name}</span></p>
       </footer>
