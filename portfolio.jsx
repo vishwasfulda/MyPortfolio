@@ -143,30 +143,6 @@ const Portfolio = ({ navigate }) => {
       tags: ["Kubernetes", "Docker", "React", "DevOps", "System Metrics"],
       link: "weather-dashboard" // Internal link to the separate WeatherDashboard component
     },
-    {
-      title: "Full-Stack Blog API",
-      description: "Implemented a RESTful API using Node.js and Express to manage blog posts and user authentication, using MySQL for persistence.",
-      tags: ["Node.js", "MySQL", "Express", "TypeScript"],
-      link: "https://github.com/vishwas/blog-api" 
-    },
-    {
-      title: "Kubernetes Deployer",
-      description: "Created a declarative Kubernetes manifest set (YAML) to deploy a multi-container application, demonstrating fundamental orchestration skills.",
-      tags: ["Kubernetes", "Docker", "DevOps"],
-      link: "https://github.com/vishwas/k8s-deployer"
-    },
-    {
-      title: "Data Processing Script",
-      description: "A Python script that reads, cleans, and analyzes academic datasets, showcasing proficiency in data manipulation and Python libraries.",
-      tags: ["Python"],
-      link: "https://github.com/vishwas/data-processor"
-    },
-    {
-      title: "Java Inventory System",
-      description: "A command-line tool developed in Java that manages a basic inventory database, demonstrating core object-oriented programming (OOP) and SQL connectivity.",
-      tags: ["Java", "SQL"],
-      link: "https://github.com/vishwas/java-inventory"
-    }
   ];
 
   return (
