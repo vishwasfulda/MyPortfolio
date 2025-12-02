@@ -17,8 +17,6 @@ import {
   Sparkles
 } from 'lucide-react';
 
-// REMOVED: import Simple3DViewer from './Simple3DViewer.jsx'; // This is now external
-
 const Portfolio = ({ navigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -120,7 +118,7 @@ const Portfolio = ({ navigate }) => {
       }
     ];
 
-  // RE-ADDING the "Simple 3D Viewer" project to the array, linking it via the router ('3d-viewer')
+  // Project list updated to include the Weather Dashboard
   const projects = [
     {
       title: "React Calculator App",
@@ -129,35 +127,18 @@ const Portfolio = ({ navigate }) => {
       link: "calculator" // Internal link used by AppRouter
     },
     {
-      title: "Simple 3D Viewer", // RE-ADDED PROJECT
+      title: "Simple 3D Viewer", 
       description: "An interactive web application using Three.js to render and manipulate basic 3D geometry (e.g., cubes, spheres), highlighting frontend graphics ability.",
       tags: ["React", "Three.js", "Graphics"],
       link: "3d-viewer" // Internal link to the separate Simple3DViewer component
     },
     {
-      title: "Full-Stack Blog API",
-      description: "Implemented a RESTful API using Node.js and Express to manage blog posts and user authentication, using MySQL for persistence.",
-      tags: ["Node.js", "MySQL", "Express", "TypeScript"],
-      link: "https://github.com/vishwas/blog-api" 
+      title: "Cloud Weather Dashboard",
+      description: "A responsive, modern dashboard simulating real-time weather and operational system metrics (latency, health), designed for cloud-native deployment.",
+      // UPDATED TAGS: Focusing on Cloud/DevOps architecture
+      tags: ["Kubernetes", "Docker", "React", "DevOps", "System Metrics"],
+      link: "weather-dashboard" // Internal link to the separate WeatherDashboard component
     },
-    {
-      title: "Kubernetes Deployer",
-      description: "Created a declarative Kubernetes manifest set (YAML) to deploy a multi-container application, demonstrating fundamental orchestration skills.",
-      tags: ["Kubernetes", "Docker", "DevOps"],
-      link: "https://github.com/vishwas/k8s-deployer"
-    },
-    {
-      title: "Data Processing Script",
-      description: "A Python script that reads, cleans, and analyzes academic datasets, showcasing proficiency in data manipulation and Python libraries.",
-      tags: ["Python"],
-      link: "https://github.com/vishwas/data-processor"
-    },
-    {
-      title: "Java Inventory System",
-      description: "A command-line tool developed in Java that manages a basic inventory database, demonstrating core object-oriented programming (OOP) and SQL connectivity.",
-      tags: ["Java", "SQL"],
-      link: "https://github.com/vishwas/java-inventory"
-    }
   ];
 
   return (
@@ -288,7 +269,7 @@ const Portfolio = ({ navigate }) => {
                       Graduating 2025
                     </div>
                   </div>
-                </div>
+                  </div>
               </div>
             </div>
 
@@ -361,8 +342,6 @@ const Portfolio = ({ navigate }) => {
             <span className="text-teal-400 font-mono text-lg">03.</span>
             <h2 className="text-3xl font-bold text-white tracking-tight">Featured Projects</h2>
           </div>
-          
-          {/* REMOVED: --- LIVE 3D VIEWER DEMO BLOCK --- */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
@@ -382,7 +361,7 @@ const Portfolio = ({ navigate }) => {
                       
                       
                       {/* Live Demo Link / Internal Router Link */}
-                      {project.link === 'calculator' || project.link === '3d-viewer' ? (
+                      {project.link === 'calculator' || project.link === '3d-viewer' || project.link === 'weather-dashboard' ? (
                         <button 
                           onClick={() => navigate(project.link)}
                           className="hover:text-teal-400 transition-colors"
