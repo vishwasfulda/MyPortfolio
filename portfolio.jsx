@@ -78,7 +78,9 @@ const Portfolio = ({ navigate }) => {
     </button>
   );
 
-  // --- EDIT YOUR DATA HERE ---
+  // =============================================================
+  // ===  START OF CONFIGURATION DATA: EDIT YOUR INFO BELOW  ===
+  // =============================================================
   const personalInfo = {
     name: "Vishwas Chhetri",
     role: "M.Sc. Global Software Development",
@@ -87,7 +89,8 @@ const Portfolio = ({ navigate }) => {
     bio: "Motivated Master's student in Global Software Development with a Bachelor's degree in Computer Applications. Solid knowledge of HTML5, CSS3, JavaScript, and frameworks like Bootstrap. Experience in developing userfriendly web applications with a focus on SEO optimization. Proficient in modern technologies such as React, Java,Python, MySQL, and version control with Git also recently worked with Kubernetes and OpenStack. Strong willingness to learn, adapt, and collaborate effectively in an international environment.",
     email: "vishwaschhetri108@gmail.com",
     github: "https://github.com/vishwasfulda",
-    linkedin: "https://www.linkedin.com/in/vishwas-chhetri-a0a6b5212"
+    linkedin: "https://www.linkedin.com/in/vishwas-chhetri-a0a6b5212",
+    profileImage: "/ProfilePic.png" 
   };
 
   const skills = [
@@ -139,6 +142,30 @@ const Portfolio = ({ navigate }) => {
       tags: ["Kubernetes", "Docker", "React", "DevOps", "System Metrics"],
       link: "weather-dashboard" // Internal link to the separate WeatherDashboard component
     },
+    {
+      title: "Full-Stack Blog API",
+      description: "Implemented a RESTful API using Node.js and Express to manage blog posts and user authentication, using MySQL for persistence.",
+      tags: ["Node.js", "MySQL", "Express", "TypeScript"],
+      link: "https://github.com/vishwas/blog-api" 
+    },
+    {
+      title: "Kubernetes Deployer",
+      description: "Created a declarative Kubernetes manifest set (YAML) to deploy a multi-container application, demonstrating fundamental orchestration skills.",
+      tags: ["Kubernetes", "Docker", "DevOps"],
+      link: "https://github.com/vishwas/k8s-deployer"
+    },
+    {
+      title: "Data Processing Script",
+      description: "A Python script that reads, cleans, and analyzes academic datasets, showcasing proficiency in data manipulation and Python libraries.",
+      tags: ["Python"],
+      link: "https://github.com/vishwas/data-processor"
+    },
+    {
+      title: "Java Inventory System",
+      description: "A command-line tool developed in Java that manages a basic inventory database, demonstrating core object-oriented programming (OOP) and SQL connectivity.",
+      tags: ["Java", "SQL"],
+      link: "https://github.com/vishwas/java-inventory"
+    }
   ];
 
   return (
@@ -194,43 +221,60 @@ const Portfolio = ({ navigate }) => {
       {/* Hero Section */}
       <section id="home" className="relative pt-32 pb-20 md:pt-52 md:pb-40 px-6 z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-teal-400 text-sm font-medium mb-6 animate-fade-in-up">
-              <Sparkles size={14} />
-              <span>Available for Summer 2025</span>
-            </div>
+          <div className="flex flex-col md:flex-row items-start gap-12 md:gap-20"> {/* Changed items-center to items-start */}
             
-            <h1 className="text-5xl md:text-8xl font-bold text-white mb-6 tracking-tight leading-none">
-              Hello, I'm <br />
-              <span className="bg-gradient-to-r from-teal-400 via-violet-400 to-teal-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-                {personalInfo.name}.
-              </span>
-            </h1>
-            
-            <h2 className="text-2xl md:text-4xl font-light text-zinc-400 mb-8 max-w-2xl leading-tight">
-              {personalInfo.tagline}
-            </h2> 
-            
-            <p className="text-lg text-zinc-500 max-w-xl mb-10 leading-relaxed">
-              {personalInfo.bio}
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <button 
-                onClick={() => scrollToSection('projects')}
-                className="group relative px-8 py-4 bg-white text-zinc-950 rounded-lg font-semibold transition-all hover:scale-105 active:scale-95 overflow-hidden"
-              >
-                <span className="relative z-10 group-hover:text-teal-900 transition-colors">View My Work</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </button>
+            {/* Text Content */}
+            <div className="md:w-2/3 md:order-first">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-teal-400 text-sm font-medium mb-6 animate-fade-in-up">
+                <Sparkles size={14} />
+                <span>Available for Opportunities</span>
+              </div>
               
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="px-8 py-4 bg-white/5 border border-white/10 hover:border-white/20 text-white rounded-lg font-medium transition-all hover:bg-white/10 backdrop-blur-sm"
-              >
-                Contact Me
-              </button>
+              <h1 className="text-5xl md:text-8xl font-bold text-white mb-6 tracking-tight leading-none">
+                Hello, I'm <br />
+                <span className="bg-gradient-to-r from-teal-400 via-violet-400 to-teal-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+                  {personalInfo.name}.
+                </span>
+              </h1> 
+              
+              <h2 className="text-2xl md:text-4xl font-light text-zinc-300 mb-8 max-w-2xl leading-tight">
+                {personalInfo.tagline}
+              </h2> 
+              
+              <p className="text-lg text-zinc-300 max-w-xl mb-10 leading-relaxed">
+                {personalInfo.bio}
+              </p>
+              
+              <div className="flex flex-wrap gap-4">
+                <button 
+                  onClick={() => scrollToSection('projects')}
+                  className="group relative px-8 py-4 bg-white text-zinc-950 rounded-lg font-semibold transition-all hover:scale-105 active:scale-95 overflow-hidden"
+                >
+                  <span className="relative z-10 group-hover:text-teal-900 transition-colors">View My Work</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </button>
+                
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="px-8 py-4 bg-white/5 border border-white/10 hover:border-white/20 text-white rounded-lg font-medium transition-all hover:bg-white/10 backdrop-blur-sm"
+                >
+                  Contact Me
+                </button>
+              </div>
             </div>
+
+            {/* Image addition starts here */}
+            {personalInfo.profileImage && (
+              <div className="md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}> {/* Added mt-8 md:mt-0 */}
+                <img 
+                  src={personalInfo.profileImage} 
+                  alt={personalInfo.name} 
+                  className="w-56 h-56 md:w-80 md:h-80 rounded-full object-cover border-4 border-teal-500 shadow-lg" 
+                />
+              </div>
+            )}
+            {/* Image addition ends here */}
+
           </div>
         </div>
       </section>
@@ -247,7 +291,7 @@ const Portfolio = ({ navigate }) => {
                 <h2 className="text-3xl font-bold text-white tracking-tight">About Me</h2>
               </div>
               
-              <div className="text-zinc-400 space-y-6 text-lg leading-relaxed">
+              <div className="text-zinc-300 space-y-6 text-lg leading-relaxed">
                 <p>
                   My journey began with a simple script and evolved into a passion for complex distributed systems. As a Masters student at <span className="text-white font-medium">{personalInfo.university}</span>, I bridge the gap between theoretical algorithms and shipping production code.
                 </p>
@@ -326,7 +370,7 @@ const Portfolio = ({ navigate }) => {
                 </div>
                 
                 <h4 className="text-lg text-violet-400 font-medium mb-4">{job.company}</h4>
-                <p className="text-zinc-400 leading-relaxed max-w-2xl">
+                <p className="text-zinc-300 leading-relaxed max-w-2xl">
                   {job.description}
                 </p>
               </div>
@@ -387,7 +431,7 @@ const Portfolio = ({ navigate }) => {
                     {project.title}
                   </h3>
                   
-                  <p className="text-zinc-400 mb-6 leading-relaxed flex-grow text-sm">
+                  <p className="text-zinc-300 mb-6 leading-relaxed flex-grow text-sm">
                     {project.description}
                   </p>
 
@@ -418,7 +462,7 @@ const Portfolio = ({ navigate }) => {
           <div className="bg-zinc-950 rounded-[22px] p-10 md:p-16">
             <p className="text-teal-400 font-mono mb-6">04. What's Next?</p>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Let's Build Together</h2>
-            <p className="text-zinc-400 text-lg mb-10 leading-relaxed max-w-xl mx-auto">
+            <p className="text-zinc-300 text-lg mb-10 leading-relaxed max-w-xl mx-auto">
               I'm actively seeking Summer 2025 opportunities. If you're looking for someone who cares about code quality and system architecture, let's chat.
             </p>
             
