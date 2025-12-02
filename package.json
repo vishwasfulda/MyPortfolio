@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "start": "npm run dev"
+  "build": "vite build",
+  "start": "npm run dev",
+  "postinstall": "chmod +x node_modules/.bin/vite || true"
   },
   "keywords": [
     "react",
@@ -28,4 +29,5 @@
     "tailwindcss": "^3.4.0",
     "vite": "^5.4.21"
   }
+  
 }
