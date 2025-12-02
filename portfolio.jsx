@@ -90,7 +90,8 @@ const Portfolio = ({ navigate }) => {
     email: "vishwaschhetri108@gmail.com",
     github: "https://github.com/vishwasfulda",
     linkedin: "https://www.linkedin.com/in/vishwas-chhetri-a0a6b5212",
-    profileImage: "/ProfilePic.png" 
+    profileImage: "/ProfilePic.png", 
+    resumePath: ""
   };
 
   const skills = [
