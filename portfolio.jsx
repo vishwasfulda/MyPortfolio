@@ -91,7 +91,7 @@ const Portfolio = ({ navigate }) => {
     github: "https://github.com/vishwasfulda",
     linkedin: "https://www.linkedin.com/in/vishwas-chhetri-a0a6b5212",
     profileImage: "/ProfilePic.png", 
-    resumePath: ""
+    resumePath: "Vishwas_Chhetri_Resume.pdf"
   };
 
   const skills = [
@@ -440,17 +440,10 @@ const Portfolio = ({ navigate }) => {
             <p className="text-teal-400 font-mono mb-6">04. What's Next?</p>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Let's Build Together</h2>
             <p className="text-zinc-300 text-lg mb-10 leading-relaxed max-w-xl mx-auto">
-              I'm actively seeking Summer 2025 opportunities. If you're looking for someone who cares about code quality and system architecture, let's chat.
+              I'm actively seeking opportunities. If you're looking for someone who cares about code quality and system architecture, let's chat.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href={`mailto:${personalInfo.email}`}
-                className="px-8 py-4 bg-teal-500 hover:bg-teal-600 text-zinc-950 font-bold rounded-lg transition-all flex items-center gap-2 hover:scale-105 active:scale-95"
-              >
-                <Mail size={18} />
-                Say Hello
-              </a>
+           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
                 href="#"
                 className="px-8 py-4 bg-transparent border border-zinc-700 text-zinc-300 hover:border-zinc-500 hover:text-white rounded-lg font-medium transition-all flex items-center gap-2"
