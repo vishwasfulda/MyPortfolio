@@ -287,7 +287,7 @@ const Portfolio = ({ navigate }) => {
                     <h4 className="text-white font-bold text-lg">{personalInfo.university}</h4>
                     <p className="text-zinc-400">M.Sc. Computer Science</p>
                     <div className="mt-2 inline-block px-3 py-1 bg-white/5 rounded-full text-xs text-zinc-400 border border-white/5">
-                      Graduating 2025
+                      Graduating 2026
                     </div>
                   </div>
                   </div>
@@ -422,13 +422,6 @@ const Portfolio = ({ navigate }) => {
               </div>
             ))}
           </div>
-          
-          <div className="mt-16 text-center">
-            <button className="group inline-flex items-center gap-2 text-white font-medium hover:text-teal-400 transition-colors">
-              View Full Project Archive 
-              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
         </div>
       </section>
 
@@ -439,7 +432,7 @@ const Portfolio = ({ navigate }) => {
             <p className="text-teal-400 font-mono mb-6">04. What's Next?</p>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Let's Build Together</h2>
             <p className="text-zinc-400 text-lg mb-10 leading-relaxed max-w-xl mx-auto">
-              I'm actively seeking Summer 2025 opportunities. If you're looking for someone who cares about code quality and system architecture, let's chat.
+              I'm actively seeking opportunities. If you're looking for someone who cares about code quality and system architecture, let's chat.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
