@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'; // ADDED useEffect
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client'; 
-// Enforcing .jsx extensions on all local imports based on file structure:
 import Portfolio from './portfolio.jsx'; 
 import Simple3DViewer from './Simple3DViewer.jsx'; 
 import Calculator from './Calculator.jsx'; 
@@ -9,19 +8,43 @@ import WeatherDashboard from './WeatherDashboard.jsx';
 // Assuming you have global styles defined here
 import './index.css'; 
 
+// --- History Utility Functions ---
+// Function to get the current view ID from the URL hash
+const getCurrentViewFromHash = () => {
+    // We will use the URL hash (e.g., #3d-viewer) for routing
+    const hash = window.location.hash.slice(1);
+    return hash || 'portfolio';
+};
+
+// Function to set the browser history state
+const setBrowserHistory = (viewId) => {
+    // Updates the URL hash (e.g., #portfolio or #3d-viewer)
+    window.history.pushState({ viewId }, "", `#${viewId}`);
+};
 
 /**
  * Main application component (the Router).
- * This component manages the state of the current view and renders the appropriate component.
  */
 const AppRouter = () => {
-    // State to hold the current view/route (e.g., 'portfolio', '3d-viewer', 'calculator', 'weather-dashboard')
-    const [currentView, setCurrentView] = useState('portfolio');
+    // State is initialized based on the current URL hash
+    const [currentView, setCurrentView] = useState(getCurrentViewFromHash());
 
-    // EFFECT TO DYNAMICALLY UPDATE THE BROWSER TITLE
+    // 1. EFFECT: Listen for browser navigation (Back/Forward buttons)
     useEffect(() => {
-        let title = "Vishwas Chhetri | Portfolio"; // Default title for the main page
+        const handlePopState = () => {
+            // When the browser history changes (via back/forward), update React state
+            setCurrentView(getCurrentViewFromHash());
+        };
 
+        window.addEventListener('popstate', handlePopState);
+
+        // Cleanup: Remove listener when component unmounts
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, []); // Run only once on mount
+
+    // 2. EFFECT: Dynamically update the browser title whenever the view changes
+    useEffect(() => {
+        let title = "Vishwas Chhetri | Portfolio"; 
         switch (currentView) {
             case '3d-viewer':
                 title = "Vishwas Chhetri | 3D Viewer Demo";
@@ -33,19 +56,25 @@ const AppRouter = () => {
                 title = "Vishwas Chhetri | Weather Dashboard";
                 break;
             default:
-                // Keep the default title
         }
-
-        // Sets the title that appears in the browser tab
         document.title = title; 
-    }, [currentView]); // Re-run effect whenever the view changes
+    }, [currentView]); 
 
-    // Function passed down to Portfolio component to handle internal navigation
+    // Function passed down to components to handle internal navigation
     const navigate = (viewId) => {
         setCurrentView(viewId);
-        // Scroll back to the top when navigating to a new view
+        setBrowserHistory(viewId); // Update the URL hash
         window.scrollTo(0, 0); 
     };
+    
+    // Ensure the initial state pushes the correct URL into the history
+    useEffect(() => {
+        // This ensures if the user lands on the root URL, the hash is set to #portfolio
+        if (window.location.hash.slice(1) !== currentView) {
+             setBrowserHistory(currentView);
+        }
+    }, [currentView]);
+
 
     // Helper component to render the navigation header for project pages
     const ProjectHeader = ({ title }) => (
@@ -64,11 +93,8 @@ const AppRouter = () => {
     const renderView = () => {
         switch (currentView) {
             case 'portfolio':
-                // Default view: Portfolio page
                 return <Portfolio navigate={navigate} />;
-            
             case '3d-viewer':
-                // Route for the Simple 3D Viewer project
                 return (
                     <div className="h-screen flex flex-col">
                         <ProjectHeader title="Simple 3D Viewer Demo" />
@@ -77,9 +103,7 @@ const AppRouter = () => {
                         </main>
                     </div>
                 );
-
             case 'calculator':
-                // Route for the Calculator project
                 return (
                     <div className="h-screen flex flex-col">
                         <ProjectHeader title="React Calculator App" />
@@ -88,9 +112,7 @@ const AppRouter = () => {
                         </main>
                     </div>
                 );
-            
             case 'weather-dashboard':
-                // Route for the Weather Dashboard project
                 return (
                     <div className="min-h-screen flex flex-col">
                          <ProjectHeader title="Cloud-Deployed Weather Dashboard" />
@@ -99,9 +121,7 @@ const AppRouter = () => {
                         </main>
                     </div>
                 );
-
             default:
-                // Fallback to the Portfolio page
                 return <Portfolio navigate={navigate} />;
         }
     };
@@ -122,7 +142,4 @@ if (rootElement) {
             <AppRouter />
         </React.StrictMode>
     );
-} else {
-    // This is a safety mechanism. If this runs, the problem is definitely in index.html.
-    console.error("Failed to find the root element. Ensure your index.html contains: <div id='root'></div>");
 }
