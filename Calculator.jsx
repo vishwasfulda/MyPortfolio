@@ -147,16 +147,7 @@ const CalculatorApp = ({ navigate }) => {
   return (
     <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center p-4 font-sans">
       
-      {/* Back Button / Navigation */}
-      <div className="w-full max-w-sm mb-4">
-        <button
-          onClick={() => navigate('portfolio')} // Navigate back to the main portfolio view
-          className="flex items-center text-teal-400 hover:text-teal-300 transition-colors p-2 rounded-lg"
-        >
-          <ChevronLeft size={20} />
-          <span className="text-sm font-medium ml-1">Back to Portfolio</span>
-        </button>
-      </div>
+      
 
       {/* Calculator Container */}
       <div className="max-w-sm w-full bg-zinc-900 rounded-2xl shadow-2xl p-6 border border-zinc-700/50">
