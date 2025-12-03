@@ -204,7 +204,7 @@ const Portfolio = ({ navigate }) => {
             <div className="md:w-2/3 md:order-first">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-teal-400 text-sm font-medium mb-6 animate-fade-in-up">
                 <Sparkles size={14} />
-                <span>Available for Summer 2025</span>
+                <span>Available for Opportunities</span>
               </div>
               
               <h1 className="text-5xl md:text-8xl font-bold text-white mb-6 tracking-tight leading-none">
