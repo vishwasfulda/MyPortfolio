@@ -86,7 +86,7 @@ const Portfolio = ({ navigate }) => {
     role: "M.Sc. Global Software Development",
     university: "Fulda University of Applied Sciences",
     tagline: "Mastering the Code & Defining the Future",
-    bio: "Master's student in Global Software Development, specializing in scalable, full-stack application engineering. Proficient across the stack with Python, TypeScript, and Java, building modern, performance-driven user interfaces using React, Next.js, and Tailwind CSS. Experienced in backend development with Node.js and data management with MySQL. I possess essential DevOps skills, including hands-on experience with Docker, Kubernetes, AWS, and Terraform for continuous, cloud-native deployments. Highly adaptable and eager to contribute effectively in international and agile environments.",
+    bio: "Master's student in Global Software Development, specializing in scalable, full-stack application engineering. Proficient across the stack with Python, TypeScript, and Java, building modern, performance-driven user interfaces using React, Next.js, and Tailwind CSS. Experienced in backend development with Node.js and data management with MySQL. I' possess essential DevOps skills, including hands-on experience with Docker, Kubernetes, AWS, and Terraform for continuous, cloud-native deployments. Highly adaptable and eager to contribute effectively in international and agile environments.",
     email: "vishwaschhetri108@gmail.com",
     github: "https://github.com/vishwasfulda",
     linkedin: "https://www.linkedin.com/in/vishwas-chhetri-a0a6b5212",
@@ -104,9 +104,9 @@ const Portfolio = ({ navigate }) => {
   const experience = [
     {
       company: "Fulda University of Applied Sciences",
-      role: "Cloud Computing Tutuor",
+      role: "Cloud Computing Tutor",
       period: "May 2025 - Oct 2025",
-      description: "Assisted My universtiy proffesor in developing practical for the university students to understand the basics of Cloud Computing with use of Kubernetes and OpenStack"
+      description: "Assisted my university professor in developing practical exercises for students to understand the basics of cloud computing using Kubernetes and OpenStack."
     },
     {
       company: "Stem Academy",
@@ -242,7 +242,8 @@ const Portfolio = ({ navigate }) => {
 
             {/* Image addition starts here */}
             {personalInfo.profileImage && (
-              <div className="md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <div className="order-first md:order-last md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+
                 <img 
                   src={personalInfo.profileImage} 
                   alt={personalInfo.name} 
