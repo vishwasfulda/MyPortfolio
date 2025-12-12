@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client'; 
+import { inject } from '@vercel/analytics';
 import Portfolio from './portfolio.jsx'; 
 import Simple3DViewer from './Simple3DViewer.jsx'; 
 import Calculator from './Calculator.jsx'; 
 import WeatherDashboard from './WeatherDashboard.jsx'; 
 // Assuming you have global styles defined here
-import './index.css'; 
+import './index.css';
+
+// Initialize Vercel Web Analytics
+inject(); 
 
 // --- History Utility Functions ---
 // Function to get the current view ID from the URL hash
