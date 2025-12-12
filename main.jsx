@@ -4,7 +4,6 @@ import Portfolio from './portfolio.jsx';
 import Simple3DViewer from './Simple3DViewer.jsx'; 
 import Calculator from './Calculator.jsx'; 
 import WeatherDashboard from './WeatherDashboard.jsx'; 
-
 // Assuming you have global styles defined here
 import './index.css'; 
 
