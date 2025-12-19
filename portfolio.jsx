@@ -95,7 +95,7 @@ const Portfolio = ({ navigate }) => {
   };
 
   const skills = [
-    { category: "Languages", icon: <Terminal size={18} />, items: ["Python", "Java", "TypeScript","SQL"] },
+    { category: "Languages", icon: <Terminal size={18} />, items: ["Python", "Java", "TypeScript","Javascript","Kotlin"] },
     { category: "Frontend", icon: <Globe size={18} />, items: ["React", "Next.js", "Tailwind CSS", "Three.js"] },
     { category: "Backend", icon: <Database size={18} />, items: ["Node.js", "MySql"] },
     { category: "DevOps", icon: <Cpu size={18} />, items: ["Docker", "Kubernetes", "AWS", "CI/CD", "Terraform"] }
